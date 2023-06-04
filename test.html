@@ -39,10 +39,9 @@
 			background-color: salmon;
 			position: absolute;
 			z-index: 999;
-			/* left: 35%; */
 			color: white;
 			bottom: 3%;
-			font-size: .3rem;
+			font-size: .2rem;
 			right: 0;
 			border-radius: 12px;
 		}
@@ -111,11 +110,11 @@
 		var xSide;
 		//判断名字的长度，以此调整名字的位置
 		if(name.length == 1){
-			xSide = 460;
+			xSide = 470;
 		}else if(name.length == 2){
-			xSide = 435;
+			xSide = 440;
 		}else if(name.length == 3){
-			xSide = 410;
+			xSide = 420;
 		}
 		var showing = document.querySelector('.showpic');
 		var canvas = document.getElementById('canvas'),ctx = canvas.getContext('2d');

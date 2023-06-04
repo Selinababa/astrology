@@ -111,7 +111,7 @@
 		var xSide;
 		//判断名字的长度，以此调整名字的位置
 		if(name.length == 1){
-			xSide = 455;
+			xSide = 460;
 		}else if(name.length == 2){
 			xSide = 435;
 		}else if(name.length == 3){
@@ -128,7 +128,7 @@
 		ctx.drawImage($('img').get(0), 0, 0);
 		//重新填充文本
 		ctx.fillStyle = "#ffffff";
-		ctx.fillText(name,xSide,1120);
+		ctx.fillText(name,xSide,1110);
 
 
 		var image = canvas.toDataURL("image/png");

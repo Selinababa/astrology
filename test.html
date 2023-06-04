@@ -21,7 +21,6 @@
 			width: 100%;
 			height: 100%;
 			background-color: #841C20;
-			text-align: center;
 			overflow: hidden;
 		}
 		.showpic{
@@ -65,7 +64,7 @@
     <div class="wrap">
 		<div class="showpic">
 			<form name="billdata" id="billdata"  enctype="multipart/form-data" novalidate>
-				<img style="display: none;" src="./imgs/certificate.png" id="picc"/>
+				<img style="display: none;" src="./certificate.png" id="picc"/>
 				<div class="save">长按保存图片</div>
 			</form>
 			<canvas id="canvas"/>
@@ -127,7 +126,7 @@
 		ctx.drawImage($('img').get(0), 0, 0);
 		//重新填充文本
 		ctx.fillStyle = "#ffffff";
-		ctx.fillText(name,xSide,1110);
+		ctx.fillText(name,xSide,1115);
 
 
 		var image = canvas.toDataURL("image/png");
@@ -137,20 +136,6 @@
 		img.setAttribute('class', 'img');
 		let body = document.querySelector('body');
 		body.appendChild(img);
-
-		// down.addEventListener('click', function(){
-		// 	console.log(111);
-		// 	console.log(download.src);
-		// 	//第二
-		// 	var image = document.getElementById("canvas").toDataURL("image/png");
-		// 	var link = document.createElement("a");
-		// 	link.href = image;
-		// 	link.download = "image.png";
-		// 	document.body.appendChild(link);
-		// 	link.click();
-		// 	document.body.removeChild(link);
-			
-		// })
 	}
 	
 </script>

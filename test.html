@@ -111,11 +111,11 @@
 		var xSide;
 		//判断名字的长度，以此调整名字的位置
 		if(name.length == 1){
-			xSide = 450;
+			xSide = 455;
 		}else if(name.length == 2){
-			xSide = 430;
+			xSide = 435;
 		}else if(name.length == 3){
-			xSide = 400;
+			xSide = 410;
 		}
 		var showing = document.querySelector('.showpic');
 		var canvas = document.getElementById('canvas'),ctx = canvas.getContext('2d');
@@ -128,9 +128,9 @@
 		ctx.drawImage($('img').get(0), 0, 0);
 		//重新填充文本
 		ctx.fillStyle = "#ffffff";
-		ctx.fillText(name,xSide,1130);
+		ctx.fillText(name,xSide,1120);
 
-		
+
 		var image = canvas.toDataURL("image/png");
 		var down = document.querySelector('.save');
 		let img = document.createElement('img');

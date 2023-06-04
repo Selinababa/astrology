@@ -39,9 +39,10 @@
 			background-color: salmon;
 			position: absolute;
 			z-index: 999;
-			left: 35%;
+			/* left: 35%; */
 			color: white;
-			bottom: 15%;
+			bottom: 3%;
+			right: 0;
 			border-radius: 12px;
 		}
 		canvas{
@@ -64,8 +65,8 @@
     <div class="wrap">
 		<div class="showpic">
 			<form name="billdata" id="billdata"  enctype="multipart/form-data" novalidate>
-				<img style="display: none;" src="./imgs/certificate.png" id="picc" crossorigin="匿名"/>
-				<div class="save">保存图片</div>
+				<img style="display: none;" src="./imgs/certificate.png" id="picc" crossorigin="anonymous"/>
+				<div class="save">长按保存图片</div>
 			</form>
 			<canvas id="canvas"/>
 		</div>
@@ -103,8 +104,18 @@
 	}(window, document))
 	
 	window.onload = function(){
+
 		var name = localStorage.getItem("name");
 		console.log(name);
+		var xSide;
+		//判断名字的长度，以此调整名字的位置
+		if(name.length == 1){
+			xSide = 450;
+		}else if(name.length == 2){
+			xSide = 430;
+		}else if(name.length == 3){
+			xSide = 400;
+		}
 		var showing = document.querySelector('.showpic');
 		var canvas = document.getElementById('canvas'),ctx = canvas.getContext('2d');
 		canvas.width = $('#picc').width();
@@ -112,36 +123,36 @@
 		canvas.height = $('#picc').height();
 		ctx.drawImage($('#picc').get(0), 0, 0);
 		ctx.font = "36pt SimSun";
-		ctx.clearRect(0,0,canvas.width,canvas.height);
+		// ctx.clearRect(0,0,canvas.width,canvas.height);//清除画布中内容
 		ctx.drawImage($('img').get(0), 0, 0);
 		//重新填充文本
 		ctx.fillStyle = "#ffffff";
-		ctx.fillText(name,400,1130);
-		
-		//下载图片
-		var download = document.getElementById("picc");
+		ctx.fillText(name,xSide,1130);
+
+		var image = document.getElementById("canvas").toDataURL("image/png");
+		// image.crossOrigin = 'Anonymous';
+		// image.src = image.toDataURL("image/png");
+		// var download = document.getElementById("picc");
 		var down = document.querySelector('.save');
+		let img = document.createElement('img');
+		img.src = image;
+		img.setAttribute('class', 'img');
+		let body = document.querySelector('body');
+		body.appendChild(img);
 
-			var image = document.getElementById("canvas").toDataURL("image/png");
-			let img = document.createElement('img');
-			img.src = image;
-			img.setAttribute('class', 'img');
-			let body = document.querySelector('body');
-			body.appendChild(img);
-
-		down.addEventListener('click', function(){
-			console.log(111);
-			console.log(download.src);
-			//第二
-			var image = document.getElementById("canvas").toDataURL("image/png");
-			var link = document.createElement("a");
-			link.href = image;
-			link.download = "image.png";
-			document.body.appendChild(link);
-			link.click();
-			document.body.removeChild(link);
+		// down.addEventListener('click', function(){
+		// 	console.log(111);
+		// 	console.log(download.src);
+		// 	//第二
+		// 	var image = document.getElementById("canvas").toDataURL("image/png");
+		// 	var link = document.createElement("a");
+		// 	link.href = image;
+		// 	link.download = "image.png";
+		// 	document.body.appendChild(link);
+		// 	link.click();
+		// 	document.body.removeChild(link);
 			
-		})
+		// })
 	}
 	
 </script>

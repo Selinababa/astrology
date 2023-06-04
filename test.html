@@ -42,6 +42,7 @@
 			/* left: 35%; */
 			color: white;
 			bottom: 3%;
+			font-size: .3rem;
 			right: 0;
 			border-radius: 12px;
 		}
@@ -65,7 +66,7 @@
     <div class="wrap">
 		<div class="showpic">
 			<form name="billdata" id="billdata"  enctype="multipart/form-data" novalidate>
-				<img style="display: none;" src="./imgs/certificate.png" id="picc" crossorigin="anonymous"/>
+				<img style="display: none;" src="./imgs/certificate.png" id="picc"/>
 				<div class="save">长按保存图片</div>
 			</form>
 			<canvas id="canvas"/>
@@ -123,16 +124,14 @@
 		canvas.height = $('#picc').height();
 		ctx.drawImage($('#picc').get(0), 0, 0);
 		ctx.font = "36pt SimSun";
-		// ctx.clearRect(0,0,canvas.width,canvas.height);//清除画布中内容
+		ctx.clearRect(0,0,canvas.width,canvas.height);//清除画布中内容
 		ctx.drawImage($('img').get(0), 0, 0);
 		//重新填充文本
 		ctx.fillStyle = "#ffffff";
 		ctx.fillText(name,xSide,1130);
 
-		var image = document.getElementById("canvas").toDataURL("image/png");
-		// image.crossOrigin = 'Anonymous';
-		// image.src = image.toDataURL("image/png");
-		// var download = document.getElementById("picc");
+		
+		var image = canvas.toDataURL("image/png");
 		var down = document.querySelector('.save');
 		let img = document.createElement('img');
 		img.src = image;
